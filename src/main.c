@@ -4,7 +4,7 @@
 #include <signal.h>
 #include <sys/time.h>
 
-// Linux settimout function
+// For Linux settimout 
 struct _timer *ptr_timer;
 struct itimerval ovalue;
 struct itimerval value;
@@ -16,11 +16,13 @@ void systick(int sig)
 
 void init_sys_timer_func()
 {
+    // Linux signal
     signal(SIGALRM, systick);
 }
 
 void start_sys_timer_func()
 {
+    // For Linux settimout 
     value.it_value.tv_sec = 1;
     value.it_value.tv_usec = 0;
     value.it_interval.tv_sec = 1;
@@ -30,6 +32,7 @@ void start_sys_timer_func()
 
 void stop_sys_timer_func()
 {
+    // For Linux settimout
     value.it_value.tv_sec = 0;
     value.it_value.tv_usec = 0;
     value.it_interval.tv_sec = 0;
@@ -46,9 +49,9 @@ int main(int argc, char **argv)
 
     ptr_timer = &timer1;
 
-    printf("111\n");
+    printf("Before delay 5 tick \n");
     timer_delay(&timer1, 5);
-    printf("222\n");
+    printf("Afore delay 5 tick \n");
 
     NEW_EVENT_TIMER(timer_event_1, EVENT_TEST, 5);
     NEW_EVENT_TIMER(timer_event_2, EVENT_TEST1, 2);
