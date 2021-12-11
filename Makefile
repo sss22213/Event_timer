@@ -5,7 +5,7 @@ INCLUDEDIR := src
 SOURCE := $(wildcard $(SOURCEDIR)/*.c)
 OBJ := $(patsubst %c,%o,$(SOURCE))
 LINKOBJ := $(wildcard $(BUILDDIR)/*.o)
-CFLAGS := -g -std=gnu11 -Wall -I$(INCLUDEDIR)
+CFLAGS := -g -std=gnu11 -I$(INCLUDEDIR)
 
 all: clean prebuild build main 
 

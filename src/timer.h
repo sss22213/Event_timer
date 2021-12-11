@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <limits.h>
+#include "event.h"
 
 #define UNUSED(x) ((void)(x))
 #define TIMER_BUG_ON(x) UNUSED(sizeof(struct {int:-!!(x);}))
@@ -32,13 +33,6 @@
                         {\
                             CALLBACK_FUNC((NAME_TIMER)->event_timer[idx]);\
                         }
-
-typedef enum {
-    EVENT_HEAD,
-    EVENT_TEST,
-    EVENT_TEST1,
-    EVENT_TEST2
-} TIMER_EVENT;
 
 struct _event_timer {
     TIMER_EVENT event;
